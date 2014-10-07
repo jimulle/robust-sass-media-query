@@ -1,0 +1,18 @@
+// create more effective media queries that are easier to understand within sass files with this mix-in
+
+@mixin breakpoints($min: 0,$max: 0) { //1: min-width parameter, 2: max-width parameter
+	@if $min == 0 {
+		@if $max == 0 {
+			@content; 
+		}
+		@else {
+			@media (max-width: $max) { @content; }
+		}
+	}
+	@else if $max == 0 {
+		@media (min-width: $min) { @content; }
+	}
+	@else {
+		@media (min-width: $min) and (max-width: $max) { @content; }
+	}
+}
